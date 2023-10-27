@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.Cajero>
+
+@{
+    ViewData["Title"] = "Lista Cajeros";
+}
+
+<h1>Lista Cajeros</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewBag.idOficina" class="btn btn-outline-success">Crear Nuevo Cajero</a>
+    <a asp-controller="Oficinas" asp-action="Index" asp-route-id="@ViewBag.idOficina" class="btn btn-outline-secondary" style="width: 110px">Atrás</a> 
+</p>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdOficina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ultimaNumeracion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>              
+                @{string Oficina = $"{item.Oficina.Codigo}-{item.Oficina.Nombres}";}
+                    @if (!string.IsNullOrEmpty(Oficina))
+                    {
+                        <p>@Oficina</p>
+                    }    
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ultimaNumeracion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                    @if (item.Estado)
+                    {
+                        <p>Activo</p>
+                    }else
+                    {
+                        <p>Inactivo</p>  
+                    }       
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCajero" class ="btn btn-outline-success">Editar</a>  @*|
+                <a asp-action="Details" asp-route-id="@item.IdCajero">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCajero">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

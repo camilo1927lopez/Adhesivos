@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.DetalleEncabezado>
+
+@{
+    ViewData["Title"] = "Detalle de Pedido";
+}
+
+<h1>Detalle de Pedido</h1>
+<div>
+    <table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCajero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cajero.IdOficina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadInicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsectivoinicialCadena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsectivoFinalCadena)
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @{string Cajero = $"{item.Cajero.Codigo}-{item.Cajero.Nombres}";}
+                @if (!string.IsNullOrEmpty(Cajero))
+                {
+                    <p>@Cajero</p>
+                }    
+            </td>
+            <td>
+                @{string Oficina = $"{item.Cajero.IdOficina}";}
+                @if (!string.IsNullOrEmpty(Oficina))
+                {
+                    <p>@Oficina</p>
+                }    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsectivoinicialCadena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsectivoFinalCadena)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.IdEncabezado">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.IdEncabezado">Details</a> *@
+                @*<a asp-action="Delete" asp-route-id="@item.IdEncabezado">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn btn-dark" >Atras</a>
+</div>

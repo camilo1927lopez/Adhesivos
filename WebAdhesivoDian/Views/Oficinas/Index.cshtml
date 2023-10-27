@@ -1,0 +1,123 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.Oficina>
+
+@{
+    ViewData["Title"] = "Lista de Oficina";
+}
+
+<h1>Lista de Oficina</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewBag.IdCliente" class ="btn btn-outline-success">Crear Nueva Oficina</a>
+   <a asp-controller="Clientes" asp-action="Index" class="btn btn-outline-secondary" style="width: 110px">Atrás</a> 
+</p>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.CodigoMunucio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoCiudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDireccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destinatario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reponsable1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reponsable2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reponsable3)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @{string Cliente = $"{item.Cliente.Codigo}-{item.Cliente.Nombre}";}
+                @if (!string.IsNullOrEmpty(Cliente))
+                {
+                    <p>@Cliente</p>
+                }    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+          @*  <td>
+                @Html.DisplayFor(modelItem => item.CodigoMunucio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoCiudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDireccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destinatario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reponsable1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reponsable2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reponsable3)
+            </td>*@
+            <td>
+                    @if (item.Estado)
+                    {
+                        <p>Activo</p>
+                    }else
+                    {
+                        <p>Inactivo</p>  
+                    } 
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOficina" class ="btn btn-outline-success">Editar</a> 
+         @*     <a asp-action="Details" asp-route-id="@item.IdOficina">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOficina">Delete</a>*@
+            </td>
+            <td>
+                <a asp-controller="Cajeroes" asp-action="Index" asp-route-id="@item.IdOficina" class="btn btn-outline-primary" style="width: 110px">Ver Cajeros</a> 
+         @*     <a asp-action="Details" asp-route-id="@item.IdOficina">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOficina">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

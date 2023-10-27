@@ -1,0 +1,7 @@
+﻿@model WebAdhesivoDian.Models.Oficina
+
+<div class="form-group" >
+        <label disabled asp-for="IdOficina" class="control-label"></label>
+        <select disabled asp-for="IdOficina" class="form-control"  asp-items = "@(new SelectList(ViewBag.ListaOficina, "Value", "Text" ))"> </select>                
+        <span asp-validation-for="IdOficina" class="text-danger"></span>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@*@section scripts{
+<script  type="text/javascript">
+        $(document).ready(function () {
+                     var objdatos = {
+
+                    };
+        
+            var url = '@Url.Action("Gestiones", "Home")';
+            
+            $.post(url, objdatos).done(function (data) {
+            
+                if (data.data !== undefined) {
+                    console.log(data.data);
+                    
+                        //let ListMensajeErrorUl = document.querySelector("ul#ListMensajeError");
+                        //let obj = data.data;
+                        //let liMensajes = document.createElement("li");
+                        //liMensajes.classList.add("list-group-item");
+                        //liMensajes.innerHTML = obj[i];
+                        //ListMensajeErrorUl.insertBefore(liMensajes, ListMensajeErrorUl.firstChild);                            
+                }
+            });
+        });
+</script>*@

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Lista Clientes";
+}
+
+<h1>Lista Clientes</h1>
+
+<p>
+    <a asp-action="Create" class ="btn btn-outline-success">Crear Nuevo Cliente</a>
+</p>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimoPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsecutivoCadena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FormateoCodigoFijo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RutaBaseSalida)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formato)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UltimoPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsecutivoCadena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormateoCodigoFijo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RutaBaseSalida)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Referencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formato)
+            </td>*@
+            <td>
+                    @if (item.Estado)
+                    {
+                        <p>Activo</p>
+                    }else
+                    {
+                        <p>Inactivo</p>  
+                    }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCliente" class ="btn btn-outline-success">Editar</a> 
+                @*<a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>*@
+            </td>
+            <td>
+                <a asp-controller="Oficinas" asp-action="Index" asp-route-id="@item.IdCliente" class="btn btn-outline-primary" style="width: 110px">Ver Oficinas</a>
+                @*<a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

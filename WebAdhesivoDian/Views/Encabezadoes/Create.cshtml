@@ -1,0 +1,53 @@
+﻿@model WebAdhesivoDian.ModelsViews.CargarArchivo
+
+<style>
+
+    a {
+    color: orangered !important;
+}
+
+
+a:hover > #BtnBaack {
+    color: white !important;
+}
+</style>
+@{
+    ViewData["Title"] = "Cargar Archivo Transmisión";
+}
+
+<h1>Generar Pedido</h1>
+<hr />
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @if (ViewBag.ProcesoTerminado != null)
+    {
+        <div class="text-success validation-summary-errors">
+	        <ul>
+		        <li>                    
+                    @Html.Raw(ViewBag.ProcesoTerminado)
+		        </li>
+	        </ul>
+        </div>
+    }
+<div class="row">
+    <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data" >           
+            <div class="form-group">
+                <label asp-for="RutaArchivo" class="control-label"></label>
+                <input asp-for="RutaArchivo" class="form-control" type="file" />
+                <span asp-validation-for="RutaArchivo" class="text-danger"></span>
+            </div>
+             <div class="form-group btn-group d-grid gap-2 d-md-block">
+                <a onclick="history.back()" class="btn btn-dark" style="color:white!important;">Atras</a>
+                <input type="submit" value="Crear"  class="btn btn-outline-success btn-group-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Index" class="btn btn-dark">Atras</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

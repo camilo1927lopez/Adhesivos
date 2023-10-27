@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.Encabezado>
+
+@{
+    ViewData["Title"] = "Lista de Pedido";
+}
+
+<h1>Lista de Pedido</h1>
+
+<p>
+     @if (User.IsInRole("Administrador") || User.IsInRole("Procesador"))
+    {
+    <a asp-action="Create" class="btn btn-outline-success">Generar Nuevo Pedido</a>
+    <a asp-controller="EstadoPedidoes" asp-action="Index" class="btn btn-outline-success">Gestionar Estados</a>
+    }
+
+    
+</p>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreArchivoCargado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoPedido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @{string Cliente = $"{item.Cliente.Codigo}-{item.Cliente.Nombre}";}
+                @if (!string.IsNullOrEmpty(Cliente))
+                {
+                    <p>@Cliente</p>
+                }    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreArchivoCargado)
+            </td>
+            <td>
+                @{string Estado = $"{item.EstadoPedido.Nombre}";}
+                @if (!string.IsNullOrEmpty(Estado))
+                {
+                    <p>@Estado</p>
+                }    
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.IdEncabezado">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.IdEncabezado" class ="btn btn-outline-warning" style="height: 40px;width: 150px;">Detalle Pedido</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.IdEncabezado">Delete</a>*@
+            </td>
+            @*@if (item.IdEstado != 1)
+                {
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEncabezado">Edit</a> |
+                <a asp-action="" asp-route-id="@item.IdEncabezado" class ="btn btn-outline-info" style="height: 40px;width: 150px;">Leer pedido</a> 
+                <a asp-action="Delete" asp-route-id="@item.IdEncabezado">Delete</a>
+            </td>
+                    
+                }*@
+            
+        </tr>
+}
+    </tbody>
+</table>
+        

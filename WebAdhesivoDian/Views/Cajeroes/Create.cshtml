@@ -1,0 +1,72 @@
+﻿@model WebAdhesivoDian.Models.Cajero
+<style>
+
+    a {
+    color: orangered !important;
+}
+
+
+a:hover > #BtnBaack {
+    color: white !important;
+}
+</style>
+@{
+    ViewData["Title"] = "Crear Cajero";
+}
+
+<h1>Crear Cajero</h1>
+
+<hr />
+<h6>Campos Obligatorios [*]</h6>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+                <input  type="hidden" asp-for="IdOficina" />
+                
+            <div class="form-group">
+                <label asp-for="ultimaNumeracion" class="control-label"></label>
+                <input type="number" onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '-' && event.key !== '+'" asp-for="ultimaNumeracion" class="form-control" />
+                <span asp-validation-for="ultimaNumeracion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '-' && event.key !== '+'" asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input type="number" onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '-' && event.key !== '+'" asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombres" class="control-label"></label>
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
+            @*<div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                </label>
+            </div>*@
+            <div class="form-group btn-group d-grid gap-2 d-md-block">
+                <a onclick="history.back()" class="btn btn-dark" style="color:white!important;">Atrás</a>
+                <input type="submit" value="Crear"  class="btn btn-outline-success btn-group-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*
+<div>
+    <a asp-action="Index" class="btn btn-dark" >Atras</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

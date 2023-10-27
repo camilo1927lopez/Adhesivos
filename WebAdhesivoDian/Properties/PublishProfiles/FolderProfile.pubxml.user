@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\cristian.lopezp\Documentos\AdhesivosDian</_PublishTargetUrl>
+    <History>True|2023-09-04T16:25:09.7524865Z;True|2023-07-10T08:47:27.6165927-05:00;True|2023-06-02T07:59:50.7354941-05:00;True|2023-05-29T08:13:56.6879206-05:00;True|2023-05-25T11:27:06.7869676-05:00;False|2023-05-25T11:25:38.1159043-05:00;True|2023-05-15T14:48:14.7100401-05:00;True|2023-05-10T15:59:27.9699356-05:00;True|2023-05-10T15:07:20.5645684-05:00;True|2023-05-10T15:03:18.7580929-05:00;True|2023-05-05T11:10:22.5561717-05:00;True|2023-05-04T16:27:42.2862263-05:00;True|2023-05-03T16:42:53.6906943-05:00;True|2023-04-28T16:12:29.4292213-05:00;True|2023-04-28T12:10:15.6999027-05:00;True|2023-04-27T14:50:51.8050434-05:00;True|2023-04-18T14:01:08.6718977-05:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

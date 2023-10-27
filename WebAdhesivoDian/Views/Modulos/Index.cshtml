@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebAdhesivoDian.Models.Modulos>
+
+
+
+<h1>Gestionar Modulos</h1>
+
+    
+</p>
+<a asp-action="Create" class="btn btn-outline-success">Crear Nuevo Modulo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Modulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo_modulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Modulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Modulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo_modulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Modulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id_Modulo" class ="btn btn-outline-success">Editar</a> 
+                    @*<a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |*@
+                    @*<a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>*@
+                </td>
+            @*<td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Modulo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Modulo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Modulo">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

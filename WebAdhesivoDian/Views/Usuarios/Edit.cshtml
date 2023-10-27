@@ -1,0 +1,99 @@
+﻿@model WebAdhesivoDian.ModelsViews.UsuarioView
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<h1>Editar Usuario</h1>
+
+<h4>@Model.Nombre</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdUsuario" />
+            <input type="hidden" asp-for="Email" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellidos" class="control-label"></label>
+                <input asp-for="Apellidos" class="form-control" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="IdRol" class="control-label"></label>
+                <input asp-for="IdRol" class="form-control" />
+                <span asp-validation-for="IdRol" class="text-danger"></span>*@
+                <label asp-for="IdRol" class="control-label"></label>
+                <select class="form-control" name="idRol" id="idRol">
+                    @foreach (Roles roles in ViewBag.ListaRoles)
+                    {
+                        if (roles.Id == Model.IdRol)
+                        {
+                            <option value="@roles.Id" selected>@roles.Nombre</option>
+                        }
+                        else
+                        {
+                            <option value="@roles.Id">@roles.Nombre</option>
+                        }
+
+                    }
+                </select>
+            </div>
+             <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input  id="inputPassword4" type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="passwordConfirm" class="control-label"></label>
+                <input  id="inputPasswordConfirm4" type="password" asp-for="passwordConfirm" class="form-control" />
+                <span asp-validation-for="passwordConfirm" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                </label>
+            </div>
+             <div class="form-group btn-group d-grid gap-2 d-md-block">
+                <a asp-action="Index" class="btn btn btn-dark" >Atrás</a>
+                @*<input type="submit" value="Guardar" class="btn btn-primary btn-group-lg" />*@
+                <button class="btn btn-primary full-width" type="submit" onclick="convertPasswordToBase64()">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+    <script>
+    function convertPasswordToBase64() {
+        var passwordInput = document.getElementById('inputPassword4');
+        var passwordValue = passwordInput.value;
+
+        var passwordInput2 = document.getElementById('inputPasswordConfirm4');
+        var passwordValue2 = passwordInput2.value;
+
+        // Convertir la contraseña a Base64
+        var base64Password = btoa(passwordValue);
+        var base64Password2 = btoa(passwordValue2);
+
+        // Asignar el valor Base64 al campo de contraseña
+        passwordInput.value = base64Password;
+        passwordInput2.value = base64Password2;
+    }
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
